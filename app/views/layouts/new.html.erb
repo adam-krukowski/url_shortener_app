@@ -1,0 +1,28 @@
+<h1>Create a New Shortened Link</h1>
+
+<%= form_with model: @link, local: true do |form| %>
+  <% if @link.errors.any? %>
+    <div>
+      <h2><%= pluralize(@link.errors.count, "error") %> prevented this link from being saved:</h2>
+      <ul>
+        <% @link.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.label :slug %>
+    <%= form.text_field :slug %>
+  </div>
+
+  <div>
+    <%= form.submit "Create Link" %>
+  </div>
+<% end %>
