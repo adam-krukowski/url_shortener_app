@@ -16,11 +16,12 @@ class LinksController < ApplicationController
     @link = Link.find_by(slug: params[:slug])
     if @link
       @link.increment!(:clicked)
-      redirect_to @link.url
+      redirect_to @link.url, allow_other_host: true # Allow redirect to external URL
     else
       render 'errors/404', status: :not_found
     end
   end
+
 
   private
 
